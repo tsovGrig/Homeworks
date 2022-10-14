@@ -2,11 +2,12 @@ let objFirst = {
   name: "Ani",
   age: 23,
   ob: {
-    m: 'ln'
+    m: 'ln',
 
   },
 
-  ak: [{age:'number'}, 5, {name:'number'
+  ak: [{age: 'number'}, 5, {
+    name: 'number'
 
   }]
 }
@@ -16,11 +17,13 @@ let objSecond = {
   age: 23,
   ob: {
     m: 'ln',
-    k:''
-  },
-  ak: [{age:'number'}, 5, {name:'number'
 
-  }]
+  },
+  ak: [{age: 'number'}, 5, {
+    name: 'number'
+
+  }],
+
 
 
 }
@@ -31,16 +34,15 @@ function areObjectsEqual(objectFirst, objectSecond) {
   let keysFirstObj = Object.keys(objectFirst);
   let keysSecondObj = Object.keys(objectSecond);
   let valueFirstObj = Object.values(objectFirst);
-  let valueSecondObj = Object.values(objectSecond);
   let exist = true;
 
 
-  if (Object.keys(keysFirstObj).length !== Object.keys(keysSecondObj).length ) {
+  if (keysFirstObj.length !== keysSecondObj.length) {
     exist = false;
   }
 
 
-  for (let i = 0; i < keysSecondObj.length; i++) {
+  for (let i = 0; i < keysFirstObj.length; i++) {
     if (!(keysFirstObj[i] in objectSecond)) {
       exist = false;
       break;
@@ -55,26 +57,23 @@ function areObjectsEqual(objectFirst, objectSecond) {
 
 function compare(firstvalue, secondvalue, exist) {
 
+  if (firstvalue.length !== secondvalue.length) {
+    exist = false;
+  }
+
   if (!(firstvalue === secondvalue)) {
-
     if (typeof (firstvalue) === 'object' && typeof (secondvalue === 'object')) {
-
       if (Array.isArray(firstvalue) && (Array.isArray(secondvalue))) {
         // console.log('we are arrays');
         let firstObjArr = [];
-        let secondObjArr = []
+        let secondObjArr = [];
+
 
         for (let i = 0; i < firstvalue.length; i++) {
-
-
-          if(firstvalue.length !== secondvalue.length){
-            exist = false;
-          }
-
           if (typeof firstvalue[i] === 'object') {
             firstObjArr.push(firstvalue[i]);
-          }else{
-            if(!secondvalue.includes(firstvalue[i])){
+          } else {
+            if (!secondvalue.includes(firstvalue[i])) {
               exist = false;
               break;
             }
@@ -85,8 +84,8 @@ function compare(firstvalue, secondvalue, exist) {
         for (let i = 0; i < secondvalue.length; i++) {
           if (typeof secondvalue[i] === 'object') {
             secondObjArr.push(secondvalue[i]);
-          }else{
-            if(!firstvalue.includes(secondvalue[i])){
+          } else {
+            if (!firstvalue.includes(secondvalue[i])) {
               exist = false;
               break;
             }
@@ -94,13 +93,13 @@ function compare(firstvalue, secondvalue, exist) {
         }
 
 
-        if(firstObjArr.length !== secondObjArr.length ){
+        if (firstObjArr.length !== secondObjArr.length) {
           exist = false;
-        }else{
-          for(let i=0; i<firstObjArr.length; i++){
-            for(let j = 0; j<secondObjArr.length;j++){
+        } else {
+          for (let i = 0; i < firstObjArr.length; i++) {
+            for (let j = 0; j < secondObjArr.length; j++) {
               let result = areObjectsEqual(firstObjArr[i], secondObjArr[i]);
-              if(result === false){
+              if (result === false) {
                 exist = false;
               }
             }
@@ -112,11 +111,6 @@ function compare(firstvalue, secondvalue, exist) {
 
         console.log(firstObjArr);
         console.log(secondObjArr);
-
-
-        // if (JSON.stringify(fistvalue) !== JSON.stringify(secondvalue)) {
-        //   exist = false;
-        //}
 
       } else {
         let result = areObjectsEqual(firstvalue, secondvalue);
