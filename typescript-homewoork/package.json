@@ -1,0 +1,19 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start-compare-objects": "tsc compare-objects.ts && node compare-objects.js ",
+    "start-array-function": "tsc array-functions.ts && node array-functions.js",
+    "start-string-function": "tsc string-functions.ts && node string-functions.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.2"
+  }
+}
