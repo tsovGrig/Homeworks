@@ -23,7 +23,7 @@ let objSecond = {
 }
 
 
-function areObjectsEqual(objectFirst:object, objectSecond:object) {
+function areObjectsEqual(objectFirst:object, objectSecond:any) {
 
     let keysFirstObj:any[] = Object.keys(objectFirst);
     let keysSecondObj:any[] = Object.keys(objectSecond);
