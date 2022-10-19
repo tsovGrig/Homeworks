@@ -14,7 +14,7 @@ var objSecond = {
     ob: {
         m: 'ln',
         ar: [1, 2, [2, 1], {
-                u: [3, { test: 1 }]
+                u: [3, { test: 2 }]
             }]
     }
 };
@@ -27,11 +27,9 @@ function areObjectsEqual(objectFirst, objectSecond) {
         exist = false;
     }
     for (var i = 0; i < keysFirstObj.length; i++) {
-        if (typeof objectSecond === 'object') {
-            if (!(keysFirstObj[i] in objectSecond)) {
-                exist = false;
-                break;
-            }
+        if (!(keysFirstObj[i] in objectSecond)) {
+            exist = false;
+            break;
         }
         else {
             exist = compare(objectSecond[keysFirstObj[i]], valueFirstObj[i], exist);
@@ -40,14 +38,8 @@ function areObjectsEqual(objectFirst, objectSecond) {
     return exist;
 }
 function compare(firstvalue, secondvalue, exist) {
-    if (firstvalue.length !== secondvalue.length) {
-        exist = false;
-    }
     if (!(firstvalue === secondvalue)) {
-        if (!(isNaN(firstvalue) && isNaN(secondvalue))) {
-            exist = false;
-        }
-        if (typeof (firstvalue) === 'object' && typeof (secondvalue === 'object')) {
+        if (typeof firstvalue === 'object' && typeof secondvalue === 'object') {
             if (Array.isArray(firstvalue) && (Array.isArray(secondvalue))) {
                 var firstObjArr = [];
                 var secondObjArr = [];
@@ -63,7 +55,7 @@ function compare(firstvalue, secondvalue, exist) {
                         }
                     }
                     else {
-                        if (secondvalue.indexOf(firstvalue[i]) === -1) {
+                        if (!secondvalue.includes(firstvalue[i])) {
                             exist = false;
                             break;
                         }
@@ -79,7 +71,7 @@ function compare(firstvalue, secondvalue, exist) {
                         }
                     }
                     else {
-                        if (firstvalue.indexOf(secondvalue[i]) === -1) {
+                        if (!firstvalue.includes(secondvalue[i])) {
                             exist = false;
                             break;
                         }

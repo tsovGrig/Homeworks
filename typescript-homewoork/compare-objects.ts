@@ -16,19 +16,18 @@ let objSecond = {
     ob: {
         m: 'ln',
         ar: [1, 2, [2, 1], {
-            u: [3, {test: 1}]
+            u: [3, {test: 2}]
         }],
 
     }
 }
 
 
-function areObjectsEqual(objectFirst: object, objectSecond: object) {
+function areObjectsEqual(objectFirst:object, objectSecond:object) {
 
-    let keysFirstObj:string[] = Object.keys(objectFirst);
-    let keysSecondObj: string[] = Object.keys(objectSecond);
-
-    let valueFirstObj = Object.values(objectFirst);
+    let keysFirstObj:any[] = Object.keys(objectFirst);
+    let keysSecondObj:any[] = Object.keys(objectSecond);
+    let valueFirstObj:any[] = Object.values(objectFirst);
     let exist:boolean = true;
 
 
@@ -38,11 +37,9 @@ function areObjectsEqual(objectFirst: object, objectSecond: object) {
 
 
     for (let i = 0; i < keysFirstObj.length; i++) {
-        if (typeof objectSecond === 'object') {
-            if (!(keysFirstObj[i] in objectSecond)) {
-                exist = false;
-                break;
-            }
+        if (!(keysFirstObj[i] in objectSecond)) {
+            exist = false;
+            break;
         } else {
             exist = compare(objectSecond[keysFirstObj[i]], valueFirstObj[i], exist);
         }
@@ -52,20 +49,10 @@ function areObjectsEqual(objectFirst: object, objectSecond: object) {
 }
 
 
-function compare(firstvalue: any, secondvalue: any, exist: boolean) {
-
-
-    if (firstvalue.length !== secondvalue.length) {
-        exist = false;
-    }
-
+function compare(firstvalue:any, secondvalue:any, exist:boolean) {
 
     if (!(firstvalue === secondvalue)) {
-
-        if(!(isNaN(firstvalue) && isNaN(secondvalue))){
-            exist = false;
-        }
-        if (typeof (firstvalue) === 'object' && typeof (secondvalue === 'object')) {
+        if (typeof firstvalue === 'object' && typeof secondvalue === 'object') {
             if (Array.isArray(firstvalue) && (Array.isArray(secondvalue))) {
                 let firstObjArr:any[] = [];
                 let secondObjArr:any[] = [];
@@ -82,7 +69,7 @@ function compare(firstvalue: any, secondvalue: any, exist: boolean) {
                         }
 
                     } else {
-                        if (secondvalue.indexOf(firstvalue[i]) === -1) {
+                        if (!secondvalue.includes(firstvalue[i])) {
                             exist = false;
                             break;
                         }
@@ -98,8 +85,7 @@ function compare(firstvalue: any, secondvalue: any, exist: boolean) {
                             secondObjArr.push(secondvalue[i]);
                         }
                     } else {
-
-                        if (firstvalue.indexOf(secondvalue[i]) === -1) {
+                        if (!firstvalue.includes(secondvalue[i])) {
                             exist = false;
                             break;
                         }
@@ -112,7 +98,7 @@ function compare(firstvalue: any, secondvalue: any, exist: boolean) {
                     } else {
                         for (let i = 0; i < firstObjArr.length; i++) {
                             for (let j = 0; j < secondObjArr.length; j++) {
-                                let result:boolean = areObjectsEqual(firstObjArr[i], secondObjArr[i]);
+                                let result = areObjectsEqual(firstObjArr[i], secondObjArr[i]);
                                 if (!result) {
                                     exist = false;
                                     break;
@@ -129,7 +115,7 @@ function compare(firstvalue: any, secondvalue: any, exist: boolean) {
                     } else {
                         for (let i = 0; i < firstArr.length; i++) {
                             for (let j = 0; j < secondArr.length; j++) {
-                                let result:boolean = compare(firstArr[i], secondArr[j], exist);
+                                let result = compare(firstArr[i], secondArr[j], exist);
                                 if (!result) {
                                     exist = false;
                                     break;
@@ -142,7 +128,7 @@ function compare(firstvalue: any, secondvalue: any, exist: boolean) {
                 // console.log(firstArr);
                 // console.log(secondArr);
             } else {
-                let result: boolean = areObjectsEqual(firstvalue, secondvalue);
+                let result = areObjectsEqual(firstvalue, secondvalue);
                 if (!result) {
                     exist = false;
                 }
@@ -154,5 +140,5 @@ function compare(firstvalue: any, secondvalue: any, exist: boolean) {
     return exist;
 }
 
-let result:boolean = areObjectsEqual(objFirst, objSecond);
+let result = areObjectsEqual(objFirst, objSecond);
 console.log(result);
