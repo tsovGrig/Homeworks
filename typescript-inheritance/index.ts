@@ -116,5 +116,5 @@ dog.run();
 console.log(dog);
 
 class Hasky extends Dog{
-    private dogtype:DogType;
+    private dogtype!:DogType;
 }

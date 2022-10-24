@@ -1,0 +1,12 @@
+{
+  "name": "typescript-inheritance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc -p ./tsconfig.json && node index.js"
+  },
+  "dependencies": {
+    "typescript": "^4.8.4"
+  }
+}
