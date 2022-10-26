@@ -32,6 +32,15 @@ var Director = /** @class */ (function (_super) {
     Director.prototype.getAllManagers = function () {
         return this.managers;
     };
+    Director.prototype.getAllProjects = function () {
+        var projectArr = [];
+        if (this.managers.length !== 0) {
+            for (var i = 0; i < this.managers.length; i++) {
+                projectArr.push(this.managers[i].projects);
+            }
+        }
+        return projectArr;
+    };
     return Director;
 }(Employee));
 var Manager = /** @class */ (function (_super) {
@@ -66,8 +75,8 @@ var TeamLead = /** @class */ (function (_super) {
 }(Employee));
 var Developer = /** @class */ (function (_super) {
     __extends(Developer, _super);
-    function Developer() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Developer(name) {
+        return _super.call(this, name) || this;
     }
     return Developer;
 }(Employee));
@@ -91,11 +100,13 @@ var teamLead = new TeamLead('TeamLead1');
 var developerFirst = new Developer('David');
 director.addManager(managerAnn);
 director.addManager(managerLisa);
-managerAnn.addProject(javascriptProject);
+var added_manager = managerAnn.addProject(javascriptProject);
 var projects = managerAnn.getProjects();
 javascriptProject.addTeamLead(teamLead);
 teamLead.addDevelopers(developerFirst);
 var developers = teamLead.getDevelopers();
-console.log(director);
-console.log(projects);
-console.log(developers);
+var projectsArray = director.getAllProjects();
+console.log(projectsArray);
+//console.log(projects);
+//console.log(developers);
+//console.log(managerAnn);

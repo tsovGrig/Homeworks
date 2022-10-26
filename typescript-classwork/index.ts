@@ -5,15 +5,16 @@ type ProjectType={
 
 type ManagerType = {
     name:string;
+    projects:ProjectType[];
 }
 
 type TeamLeadType ={
     name:string;
-    developers:DevelopersType;
+    developers:DevelopersType[];
 }
 
 type DevelopersType = {
-
+    name:string;
 }
 
 
@@ -40,6 +41,16 @@ class Director extends Employee{
 
     public getAllManagers(){
         return this.managers;
+    }
+
+    public getAllProjects(){
+        let projectArr = [];
+        if(this.managers.length !== 0){
+            for(let i=0;i<this.managers.length;i++){
+                projectArr.push(this.managers[i].projects);
+            }
+        }
+        return projectArr;
     }
 }
 
@@ -79,6 +90,11 @@ class TeamLead extends Employee{
 }
 
 class Developer extends Employee{
+    public name!:string;
+    constructor(name:string){
+        super(name);
+
+    }
 
 }
 
@@ -108,12 +124,16 @@ const teamLead = new TeamLead('TeamLead1');
 const developerFirst = new Developer('David');
 
 director.addManager(managerAnn);
-director.addManager(managerLisa)
-managerAnn.addProject(javascriptProject);
+director.addManager(managerLisa);
+let added_manager = managerAnn.addProject(javascriptProject);
+
+
 const projects = managerAnn.getProjects();
 javascriptProject.addTeamLead(teamLead);
 teamLead.addDevelopers(developerFirst);
 const developers = teamLead.getDevelopers();
-console.log(director);
-console.log(projects);
-console.log(developers)
+let projectsArray = director.getAllProjects();
+//console.log(projectsArray);
+//console.log(projects);
+//console.log(developers);
+//console.log(managerAnn);
