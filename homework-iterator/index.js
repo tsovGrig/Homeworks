@@ -6,12 +6,12 @@ const object = {
     forth: 40,
     [Symbol.iterator]: () => {
         const numberArray = Object.values(object);
-        let i = 0;
-        let old = numberArray[i];
-        let newOne = numberArray[i + 1];
+        let i = 2;
+        let old = numberArray[i - 2];
+        let newOne = numberArray[i - 1];
         return {
             next: () => {
-                if (i++ < numberArray.length - 1) {
+                if (i++ < numberArray.length + 1) {
                     old = old + newOne;
                     return {
                         value: old,

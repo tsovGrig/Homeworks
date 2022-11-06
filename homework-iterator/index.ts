@@ -5,12 +5,12 @@ const object:any = {
     forth:40,
     [Symbol.iterator]:  ()=> {
         const numberArray:number[] = Object.values(object);
-        let i = 0;
-        let old:number = numberArray[i];
-        let newOne:number = numberArray[i+1];
+        let i = 2;
+        let old:number = numberArray[i-2];
+        let newOne:number = numberArray[i-1];
         return {
             next: () => {
-                if(i++ < numberArray.length -1 ){
+                if(i++ < numberArray.length +1){
                     old = old + newOne;
                     return {
                         value:old,
