@@ -1,0 +1,11 @@
+<ng-container *ngFor="let item of users; index as indexOfelement;">
+
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title">{{item}}<button type="button"  class="btn-close close " (click)="deleteUser(indexOfelement)"aria-label="Close"></button></h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a  class="btn btn-primary" [ngStyle]="{'background-color': selectedUser===item? selectedColor: 'grey'}" (click)="changeColor($event, item)">change Color</a>
+  </div>
+</div>
+
+</ng-container>
