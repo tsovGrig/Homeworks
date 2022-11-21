@@ -1,0 +1,36 @@
+.gallery-container{
+  display:flex;
+  justify-content: space-between;
+  margin: 40px 20px 80px 20px;
+  width: 97%;
+  flex-wrap: wrap;
+}
+
+.gallery-item{
+  width: 23%;
+  background-image: url("../../../assets/image2.png");
+  height: 300px;
+  object-fit:cover;
+  background-size: contain;
+  margin: 20px 0;
+}
+
+.gallery-item:hover{
+  transform: scale(1.2);
+}
+
+.gallery-item-content{
+  margin-top:200px;
+  margin-left:20px;
+  color: #FFFFFF;
+}
+
+.gallery-item-content p{
+  font-size:11px;
+  word-break: break-all;
+}
+
+.gallery-item-content span{
+  display:block;
+  font-size:18px;
+}

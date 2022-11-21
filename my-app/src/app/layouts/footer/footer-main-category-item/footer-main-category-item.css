@@ -1,0 +1,13 @@
+.footer-categories-headings-item{
+  color:#FFFFFF !important;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5385em;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.footer-categories-headings-item:hover{
+  color: #999999 !important;
+}

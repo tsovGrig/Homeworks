@@ -1,0 +1,26 @@
+.service-component{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 60px 0;
+}
+
+.service-component div i svg  path{
+  fill: #c0a319 !important;
+}
+
+.service-component div{
+text-align: center;
+}
+
+.service-component div p{
+  margin-top:10px;
+}
+
+.font-13{
+  font-size:13px;
+}
+
+.sevice-description-color{
+  color:#666666;
+}
