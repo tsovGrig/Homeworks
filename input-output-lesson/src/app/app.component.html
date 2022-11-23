@@ -1,0 +1,9 @@
+<div class="form-container">
+  <input type="text" [(ngModel)]="inputValue">
+  <button (click)="onClickAdd()">Add</button>
+</div>
+<ul>
+  <li *ngFor="let item of list; let ind = index">
+    <app-card></app-card>
+  </li>
+</ul>
