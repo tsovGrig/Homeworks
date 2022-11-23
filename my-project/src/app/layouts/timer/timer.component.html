@@ -1,0 +1,7 @@
+<div class="timer">
+  <input type="number" [(ngModel)]="number">
+  <button (click)="addTime()">Add</button>
+  <div>
+    <div ><app-timer-item *ngFor="let number of numberArr;let i = index;" (deletedTimerInput)="deleteItem($event,i)" [timerNumber]="number" ></app-timer-item></div>
+  </div>
+</div>
