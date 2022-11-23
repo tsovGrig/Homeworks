@@ -19,12 +19,6 @@ export class TimerComponent{
     this.numberArr.push(this.number);
   }
 
-  public time_convert(num:number)
-  {
-    const hours = Math.floor(num / 60);
-    const minutes = num % 60;
-    return `${hours}:${minutes}`;
-  }
 
   deleteItem(event:{isdeleted:boolean}, i:number) {
     if (event.isdeleted) {
