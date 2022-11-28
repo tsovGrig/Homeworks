@@ -1,0 +1,36 @@
+<div class="">
+  <div class="container">
+    <div>
+      <h1>Users</h1>
+      <input style="margin-bottom: 20px;" type="text" class="form-control" (change)="onSearchChange()" [(ngModel)]="searchItem" placeholder="Search Name">
+      <div *ngIf="foundSearchItems.length>0;else other_content">
+        <app-user-data [userdata]="foundSearchItems"></app-user-data>
+      </div>
+
+      <ng-template #other_content>
+        <!-- items being paged -->
+        <app-user-data [userdata]="pagedItems"></app-user-data>
+
+        <!-- pager -->
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+          </li>
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+  <hr/>
+</div>
