@@ -42,7 +42,7 @@
 
     <div *ngSwitchCase=1>
       <form>
-        <div class="row" *ngFor="let item of settingService.getAllSettingItems()">
+        <div class="row" *ngFor="let item of settingService.getAllSettingItems();let i=index">
           <div class="col">
             <input type="text" class="form-control" placeholder="name" value="{{item.name}}">
           </div>
@@ -50,7 +50,7 @@
             <input type="text" class="form-control" placeholder="url" value="{{item.url}}">
           </div>
           <div class="form-check">
-            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" [checked]="item.isActive" aria-label="...">
+            <input class="form-check-input position-static"  (click)="changeSettingState(i)" type="checkbox" id="blankCheckbox" [checked]="item.isActive" aria-label="...">
           </div>
         </div>
       </form>

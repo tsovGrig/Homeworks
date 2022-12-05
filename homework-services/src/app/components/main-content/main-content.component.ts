@@ -18,4 +18,8 @@ export class MainContentComponent {
      this.isSelected = i;
   }
 
+  changeSettingState(i:number){
+    this.settingService.updateSetting(i);
+  }
+
 }

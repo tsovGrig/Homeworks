@@ -21,4 +21,8 @@ export class SettingService {
       return item.isActive;
     })
   }
+
+  updateSetting(i:number){
+    this.settingItems[i].isActive = !this.settingItems[i].isActive;
+  }
 }
