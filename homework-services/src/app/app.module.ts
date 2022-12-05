@@ -8,6 +8,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import {ToggleService} from "./services/toggle.service";
 import {FormsModule} from "@angular/forms";
+import {TodosService} from "./services/todos.service";
 
 
 @NgModule({
@@ -19,9 +20,10 @@ import {FormsModule} from "@angular/forms";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [ToggleService],
+  providers: [ToggleService, TodosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

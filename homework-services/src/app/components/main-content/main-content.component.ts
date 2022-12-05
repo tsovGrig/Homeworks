@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ToggleService} from "../../services/toggle.service";
 import {SettingService} from "../../services/setting.service";
+import {TodosService} from "../../services/todos.service";
 
 @Component({
   selector: 'app-main-content',
@@ -9,12 +10,18 @@ import {SettingService} from "../../services/setting.service";
 })
 export class MainContentComponent {
   contentItems: string[] = ['ToDos', 'Settings'];
-  isSelected: number = 1;
+  isSelected: number = 0;
   name: string = '';
   url: string = '';
   updateHappening:boolean =false;
+  title:string = '';
+  description:string = '';
 
-  constructor(public toggleService: ToggleService, public settingService: SettingService) {
+  constructor(
+    public toggleService: ToggleService,
+    public settingService: SettingService,
+    public toDoService: TodosService
+  ) {
   }
 
   selectedContent(i: number) {
@@ -30,6 +37,14 @@ export class MainContentComponent {
       this.updateHappening = true;
       console.log( this.updateHappening = true);
     }
+  }
+
+  saveTodo(){
+    this.toDoService.addTodoesItem({
+      title: this.title,
+      description:this.description
+    });
+    console.log(this.toDoService.toDoItems);
   }
 
 }

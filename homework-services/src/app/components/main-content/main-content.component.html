@@ -13,25 +13,25 @@
       <div class="col-6">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+            <span class="input-group-text"  id="inputGroup-sizing-default">Title</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="form-control" [(ngModel)]="title" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" >Description</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="form-control"  [(ngModel)]="description" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" (click)="saveTodo()" class="btn btn-success">Save</button>
       </div>
       <div>
         <div class="row">
         <div class="col-9">
-          <div class="card">
+          <div class="card" style="width:400px;">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <h5 class="card-title">{{title}}</h5>
+              <p class="card-text">{{description}}</p>
             </div>
           </div>
         </div>
@@ -42,6 +42,7 @@
 
     <div *ngSwitchCase=1>
       <form>
+        <button style="margin-bottom:20px;" type="button" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i> Add</button>
         <div class="row" *ngFor="let item of settingService.getAllSettingItems();let i=index">
           <div class="col">
             <input type="text" class="form-control" placeholder="name" value="{{item.name}}">
@@ -50,7 +51,7 @@
             <input type="text" class="form-control" placeholder="url" value="{{item.url}}">
           </div>
           <div class="form-check">
-            <input class="form-check-input position-static"   (click)="changeSettingState(i)" type="checkbox" id="blankCheckbox" [checked]="item.isActive" aria-label="...">
+            <input class="form-check-input position-static" (click)="changeSettingState(i)" type="checkbox" id="blankCheckbox" [checked]="item.isActive" aria-label="...">
           </div>
         </div>
       </form>
