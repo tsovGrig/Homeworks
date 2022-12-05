@@ -7,6 +7,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { NavComponent } from './components/nav/nav.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import {ToggleService} from "./services/toggle.service";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
