@@ -1,0 +1,6 @@
+<nav  [ngClass]="{'toggled': !toggleService.getIsVisible()}" class="navbar fixed-to-top navbar-light bg-secondary" >
+  <button  (click)="changeToggleStatus()" class="navbar-toggler" type="button" data-toggle="collapse">
+    <span class="navbar-toggler-icon" ></span>
+  </button>
+</nav>
+

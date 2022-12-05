@@ -1,0 +1,20 @@
+.main-content-container {
+  margin-top: 90px;
+  padding-left: 320px;
+  width:100%;
+}
+
+.main-content-toggle{
+  margin-top: 90px;
+  padding-left: 80px;
+}
+
+.row{
+  flex-wrap:nowrap !important;
+}
+
+.selected-main-content-container{
+  margin-top:60px;
+}
+
+
