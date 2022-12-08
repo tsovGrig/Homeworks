@@ -8,7 +8,7 @@ export class CustomNgModelDirective {
 
   @Input()
   e: string = '';
-  @Output() appCustomNgModel = new EventEmitter<string>();
+  @Output() data = new EventEmitter<string>();
 
 
   constructor(private el: ElementRef) {
@@ -18,7 +18,7 @@ export class CustomNgModelDirective {
   @HostListener('change')
   onchange() {
     this.e = (this.el.nativeElement as HTMLInputElement).value;
-    this.appCustomNgModel.emit(this.e);
+    this.data.emit(this.e);
   }
 
 }
