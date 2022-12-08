@@ -1,0 +1,14 @@
+<div class="col-6">
+  <div class="form-group col-6">
+    <label for="exampleInputEmail1"></label>
+    <input (appCustomNgModel)="changeValue($event)" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+           placeholder="Input">
+  </div>
+
+  <div class="card col-6">
+    <div class="card-body">
+      <p>Output</p>
+      {{element}}
+    </div>
+  </div>
+</div>
