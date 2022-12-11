@@ -1,0 +1,27 @@
+<div [ngSwitch]="pageService.activePage">
+  <div *ngSwitchCase="confirmationPage">
+    <div class="p-b-40">
+      <button  (click)="changeLanguage(languagesService.armenianData, 'AM')"  style="width:30%" class="">
+        {{languagesService.armenianData.LANG}}
+      </button>
+      <button (click)="changeLanguage(languagesService.englishData, 'ENG')" style="width:30%; margin-left:20px;" class="">
+        {{languagesService.englishData.LANG}}
+      </button>
+    </div>
+    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+<span class="login100-form-title">
+    {{languagesService.language.DO_YOU_HAVE_ACCOUNT}}
+</span>
+      <div class="container-login100-form-btn  p-b-40">
+        <button (click)="confirmAccountExist()" style="width:40%" class="login100-form-btn">
+          {{languagesService.language.YES}}
+        </button>
+        <button (click)="rejectAccountExist()" style="width:40%; margin-left:20px;" class="login100-form-btn">
+          {{languagesService.language.NO}}
+        </button>
+      </div>
+    </form>
+  </div>
+  <div *ngSwitchCase="loginPage"><app-login></app-login></div>
+  <div *ngSwitchCase="registrationPage"><app-register></app-register></div>
+</div>
