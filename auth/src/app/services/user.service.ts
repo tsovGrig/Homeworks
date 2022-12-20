@@ -16,18 +16,8 @@ export class UserService{
   constructor(public languageService:LanguagesService) {
   }
 
-  saveUserData ({username, password, confirm_password}: UserInput){
-    this.errors = [];
-    if(this.languageService.languageTitle === 'AM'){
-      this.errorList = AmErrors;
-    }else{
-      this.errorList = EngErrors;
-    }
-    this.validateData(username, 'username');
-    this.validateData(password, 'password');
-    this.validateData(confirm_password, 'confirm_password');
-    this.validatePassword(password, confirm_password, 'confirm_password')
-    if(this.errors.length === 0){
+  saveUserData ({username, password, confirm_password}:any){
+
       console.log('here');
       let usersData:any = localStorage.getItem('users');
       let users = JSON.parse(usersData);
@@ -39,25 +29,14 @@ export class UserService{
       }else{
         localStorage.setItem('users',JSON.stringify([{username, password, confirm_password}]));
       }
+      console.log(users);
       this.userAdded = true;
-    }
-  }
-
-  validateData(data:string, field:string){
-    if(data === '' || !data){
-     this.errors.push({field, error:this.errorList.FIELD_CAN_NOT_BE_EMPTY  })
-    }
   }
 
   getErrors(){
     return Array.from(this.errors);
   }
 
-  validatePassword(password:string, confirm_password:string, field:string){
-    if(password !== confirm_password){
-      this.errors.push({field, error:this.errorList.PASSWORD_MISSMATCH  })
-    }
-  }
 
   login({username, password}:User){
     this.errors = [];
@@ -66,13 +45,7 @@ export class UserService{
     }else{
       this.errorList = EngErrors;
     }
-    this.validateData(username, 'username');
-    this.validateData(password, 'password');
-
-    if(this.errors.length === 0){
       this.checkIfUserExists(username, password);
-    }
-
   }
 
   checkIfUserExists(username:string, password:string){

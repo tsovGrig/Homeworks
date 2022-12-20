@@ -10,7 +10,7 @@ import {ConfirmationComponent} from "./components/confirmation/confirmation.comp
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import {PagesService} from "./services/pages.service";
 import {LanguagesService} from "./services/languages.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "./services/user.service";
 
 
@@ -26,7 +26,8 @@ import {UserService} from "./services/user.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [PagesService, LanguagesService, UserService],
   bootstrap: [AppComponent]

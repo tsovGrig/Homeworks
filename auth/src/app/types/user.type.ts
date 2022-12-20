@@ -4,7 +4,7 @@ export  interface User{
 }
 
 export interface UserInput{
-  username:string;
-  password:string;
-  confirm_password:string;
+  username:string | null;
+  password:string | null;
+  confirm_password:string | null;
 }
